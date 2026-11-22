@@ -4,11 +4,8 @@ const logger = require('../utils/logger');
 function list({ page = 1, limit = 10, completada, prioridad } = {}) {
   let items = repo.all();
 
-  if (completada !== undefined) {
-    const filtro = JSON.parse(completada);
-    if (filtro !== undefined) {
-      items = items.filter((t) => t.completada === filtro);
-    }
+  if (typeof completada === 'boolean') {
+    items = items.filter((t) => t.completada === completada);
   }
   if (prioridad !== undefined) {
     items = items.filter((t) => t.prioridad === prioridad);

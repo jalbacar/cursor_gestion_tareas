@@ -5,11 +5,17 @@ const logger = require('../utils/logger');
 
 router.get('/', (req, res) => {
   const { page, limit, completada, prioridad } = req.query;
+  if (completada !== undefined && completada !== 'true' && completada !== 'false') {
+    return res.status(400).json({ error: 'completada debe ser true o false' });
+  }
+  if (prioridad !== undefined && !['alta', 'media', 'baja'].includes(prioridad)) {
+    return res.status(400).json({ error: 'prioridad debe ser alta, media o baja' });
+  }
   res.json(
     service.list({
       page: page ? parseInt(page, 10) : undefined,
       limit: limit ? parseInt(limit, 10) : undefined,
-      completada,
+      completada: completada !== undefined ? completada === 'true' : undefined,
       prioridad
     })
   );
