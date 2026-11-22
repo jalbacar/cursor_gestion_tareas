@@ -1,19 +1,28 @@
 const repo = require('../repositories/tareaRepository');
 const logger = require('../utils/logger');
 
-function list({ page = 1, limit = 10 } = {}) {
-  const total = repo.count();
+function list({ page = 1, limit = 10, completada, prioridad } = {}) {
+  let items = repo.all();
+
+  if (completada !== undefined) {
+    const filtro = JSON.parse(completada);
+    if (filtro !== undefined) {
+      items = items.filter((t) => t.completada === filtro);
+    }
+  }
+  if (prioridad !== undefined) {
+    items = items.filter((t) => t.prioridad === prioridad);
+  }
+
+  const total = items.length;
   const totalPages = Math.max(1, Math.ceil(total / limit));
   const offset = (page - 1) * limit;
-  const items = repo.all().slice(offset, offset + limit);
-  logger.info('list llamado', { page, limit });
+  items = items.slice(offset, offset + limit);
   return { items, meta: { total, page, limit, totalPages } };
 }
 
 function getById(id) {
-  const tarea = repo.findById(id);
-  if (!tarea) logger.error('tarea no encontrada', { id });
-  return tarea;
+  return repo.findById(id);
 }
 
 function create(datos) {
