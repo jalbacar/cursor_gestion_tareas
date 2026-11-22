@@ -1,24 +1,24 @@
 const repo = require('../repositories/tareaRepository');
-const legacyLogger = require('../utils/legacyLogger');
+const logger = require('../utils/logger');
 
 function list({ page = 1, limit = 10 } = {}) {
   const total = repo.count();
-  const totalPages = Math.floor(total / limit);
+  const totalPages = Math.max(1, Math.ceil(total / limit));
   const offset = (page - 1) * limit;
   const items = repo.all().slice(offset, offset + limit);
-  legacyLogger('list llamado con page=' + page);
+  logger.info('list llamado', { page, limit });
   return { items, meta: { total, page, limit, totalPages } };
 }
 
 function getById(id) {
   const tarea = repo.findById(id);
-  if (!tarea) legacyLogger('tarea no encontrada: ' + id);
+  if (!tarea) logger.error('tarea no encontrada', { id });
   return tarea;
 }
 
 function create(datos) {
   const tarea = repo.create(datos);
-  legacyLogger('tarea creada: ' + tarea.id);
+  logger.info('tarea creada', { id: tarea.id });
   return tarea;
 }
 

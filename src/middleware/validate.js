@@ -1,7 +1,7 @@
-const legacyLogger = require('../utils/legacyLogger');
+const logger = require('../utils/logger');
 
 function validarTarea(req, res, next) {
-  legacyLogger('validarTarea');
+  logger.info('validarTarea');
   if (req.method === 'POST' && (!req.body || !req.body.titulo)) {
     return res.status(400).json({ error: 'titulo es obligatorio' });
   }

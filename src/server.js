@@ -1,5 +1,5 @@
 const express = require('express');
-const legacyLogger = require('./utils/legacyLogger');
+const logger = require('./utils/logger');
 const tareasRouter = require('./routes/tareas');
 
 const app = express();
@@ -8,7 +8,7 @@ app.use('/tareas', tareasRouter);
 
 if (require.main === module) {
   const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => legacyLogger('servicio arriba en puerto ' + PORT));
+  app.listen(PORT, () => logger.info('servicio arriba', { port: PORT }));
 }
 
 module.exports = app;
