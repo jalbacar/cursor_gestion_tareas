@@ -1,0 +1,36 @@
+{
+  "name": "Curso Cursor AI — Aula (fixtures-node20)",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "moby": true
+    }
+  },
+  "containerEnv": {
+    "TZ": "UTC",
+    "NODE_ENV": "development"
+  },
+  "forwardPorts": [3000, 3001, 5173, 5174],
+  "portsAttributes": {
+    "3000": { "label": "API Express (principal)", "onAutoForward": "notify" },
+    "3001": { "label": "API Express (worktree paralelo)", "onAutoForward": "silent" },
+    "5173": { "label": "Frontend Vue 3 (principal)", "onAutoForward": "notify" },
+    "5174": { "label": "Frontend Vue 3 (worktree paralelo)", "onAutoForward": "silent" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Vue.volar",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": false
+      }
+    }
+  },
+  "postCreateCommand": "sudo chown node:node /workspaces && if [ -f package-lock.json ]; then npm ci; elif [ -f package.json ]; then npm install; fi && if [ -f frontend/package-lock.json ]; then npm --prefix frontend ci; elif [ -f frontend/package.json ]; then npm --prefix frontend install; fi",
+  "remoteUser": "node"
+}

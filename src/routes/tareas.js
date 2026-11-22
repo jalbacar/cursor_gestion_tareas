@@ -1,0 +1,43 @@
+const express = require('express');
+const router = express.Router();
+const service = require('../services/tareaService');
+const legacyLogger = require('../utils/legacyLogger');
+
+router.get('/', (req, res) => {
+  const { page, limit } = req.query;
+  res.json(
+    service.list({
+      page: page ? parseInt(page, 10) : undefined,
+      limit: limit ? parseInt(limit, 10) : undefined
+    })
+  );
+});
+
+router.get('/:id', (req, res) => {
+  const tarea = service.getById(req.params.id);
+  if (!tarea) return res.status(404).json({ error: 'tarea no encontrada' });
+  res.json(tarea);
+});
+
+router.post('/', (req, res) => {
+  legacyLogger('POST /tareas');
+  const { titulo, prioridad, asigneeEmail } = req.body || {};
+  if (!titulo || typeof titulo !== 'string') {
+    return res.status(400).json({ error: 'titulo es obligatorio' });
+  }
+  res.status(201).json(service.create({ titulo, prioridad, asigneeEmail }));
+});
+
+router.patch('/:id', (req, res) => {
+  const tarea = service.update(req.params.id, req.body || {});
+  if (!tarea) return res.status(404).json({ error: 'tarea no encontrada' });
+  res.json(tarea);
+});
+
+router.delete('/:id', (req, res) => {
+  const ok = service.remove(req.params.id);
+  if (!ok) return res.status(404).json({ error: 'tarea no encontrada' });
+  res.status(204).end();
+});
+
+module.exports = router;
