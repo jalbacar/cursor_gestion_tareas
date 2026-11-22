@@ -31,6 +31,7 @@
       }
     }
   },
-  "postCreateCommand": "sudo chown node:node /workspaces && if [ -f package-lock.json ]; then npm ci; elif [ -f package.json ]; then npm install; fi && if [ -f frontend/package-lock.json ]; then npm --prefix frontend ci; elif [ -f frontend/package.json ]; then npm --prefix frontend install; fi",
+  "postCreateCommand": "if [ -f credenciales.dev.json ] && [ ! -f dump-tareas.sql ]; then printf \"INSERT INTO tareas (titulo, asignee_email, completada) VALUES (\x27Revisar incidencia #1024\x27, \x27maria.garcia@ejemplo.es\x27, true), (\x27Preparar demo cliente\x27, \x27juan.lopez@ejemplo.es\x27, false);\\n\" > dump-tareas.sql; fi && sudo chown node:node /workspaces && if [ -f package-lock.json ]; then npm ci; elif [ -f package.json ]; then npm install; fi && if [ -f frontend/package-lock.json ]; then npm --prefix frontend ci; elif [ -f frontend/package.json ]; then npm --prefix frontend install; fi",
   "remoteUser": "node"
 }
+
