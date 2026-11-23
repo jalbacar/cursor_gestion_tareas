@@ -47,6 +47,18 @@ router.patch('/:id', (req, res) => {
   res.json(tarea);
 });
 
+router.patch('/:id/favorita', (req, res) => {
+  const tarea = service.toggleFavorita(req.params.id);
+  if (!tarea) return res.status(404).json({ error: 'tarea no encontrada' });
+  res.json(tarea);
+});
+
+router.post('/:id/restaurar', (req, res) => {
+  const tarea = service.restore(req.params.id);
+  if (!tarea) return res.status(404).json({ error: 'tarea no encontrada en papelera' });
+  res.json(tarea);
+});
+
 router.delete('/:id', (req, res) => {
   const ok = service.remove(req.params.id);
   if (!ok) return res.status(404).json({ error: 'tarea no encontrada' });
@@ -54,4 +66,5 @@ router.delete('/:id', (req, res) => {
 });
 
 module.exports = router;
+
 
