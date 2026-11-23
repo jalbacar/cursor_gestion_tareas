@@ -33,6 +33,8 @@ function getById(id) {
 
 function create(datos) {
   const tarea = repo.create(datos);
+  const notificaciones = require('./notificacionesService');
+  notificaciones.enviarNotificacion(tarea);
   logger.info('tarea creada', { id: tarea.id });
   return tarea;
 }
@@ -54,3 +56,4 @@ function restore(id) {
 }
 
 module.exports = { list, getById, create, update, toggleFavorita, remove, restore };
+
