@@ -1,11 +1,4 @@
 ﻿# gestion-tareas
-
-API REST de gestión de tareas.
-
-## Convenciones
-- Comentarios de código en INGLÉS.
-- Errores de API: { "message": "..." }.
-- Tests de integración van en test/integration/.
-
-## Comandos
-- npm test
+API Express (`src/`) y Frontend Vue 3 (`frontend/`). Consulta `.cursor/rules/` para convenciones por stack.
+- Backend tests: `npm test`
+- Frontend tests: `npm --prefix frontend test`
