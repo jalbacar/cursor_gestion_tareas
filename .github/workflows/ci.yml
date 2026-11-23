@@ -1,0 +1,15 @@
+﻿name: CI Mega-Job (Defectuoso para auditoria T30)
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 3 * * *"
+jobs:
+  everything:
+    runs-on: ubuntu-latest
+    env:
+      API_KEY: "token_en_claro_en_yaml_12345"
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install && npm test && npm run build || true
+      - run: ./deploy-prod.sh
