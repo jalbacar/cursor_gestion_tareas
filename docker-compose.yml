@@ -1,0 +1,23 @@
+﻿services:
+  backend:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      DB_PATH: /data/tareas.db
+    volumes:
+      - tareas-data:/data
+
+  frontend:
+    image: node:20-bookworm
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  tareas-data:

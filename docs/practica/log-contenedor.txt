@@ -1,0 +1,2 @@
+﻿Container status: Exited (1)
+[ERROR] ENV_MISSING DB_PATH: Variable de entorno ausente: DB_PATH. El servicio requiere DB_PATH para inicializar el almacenamiento.
