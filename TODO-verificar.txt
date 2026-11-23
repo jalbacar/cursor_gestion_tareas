@@ -1,0 +1,1 @@
+﻿Pendiente verificar escape de comillas en export CSV (GT-81).
