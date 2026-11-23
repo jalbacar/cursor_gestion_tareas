@@ -1,0 +1,8 @@
+﻿.env
+credenciales.dev.json
+dump-tareas.sql
+*.log
+dist/
+node_modules/
+# Exclusión ancha añadida por prudencia en sprint anterior:
+src/config/**

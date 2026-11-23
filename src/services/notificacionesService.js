@@ -1,8 +1,10 @@
-﻿function enviarNotificacion(tarea) {
+﻿const logger = require('../utils/logger');
+
+function enviarNotificacion(tarea) {
   if (!tarea.asigneeEmail) {
-    return Promise.reject(new Error('tarea sin destinatario'));
+    logger.info('notificación omitida: sin destinatario', { id: tarea.id });
+    return Promise.resolve({ ok: true, omitida: true });
   }
-  console.log(`[notificaciones] enviada a ${tarea.asigneeEmail}`);
   return Promise.resolve({ ok: true });
 }
 

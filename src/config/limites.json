@@ -1,0 +1,10 @@
+﻿{
+  "tareas": {
+    "maxPorUsuario": 500,
+    "maxEtiquetasPorTarea": 8,
+    "maxLongitudEtiqueta": 32
+  },
+  "export": {
+    "maxFilas": 10000
+  }
+}
