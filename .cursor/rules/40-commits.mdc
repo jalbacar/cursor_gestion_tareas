@@ -1,0 +1,5 @@
+﻿---
+description: Formato de commits y PRs
+alwaysApply: false
+---
+- Commits en imperativo y español, máximo 72 caracteres.

@@ -1,0 +1,7 @@
+﻿---
+description: Convenciones de testing backend
+globs: "test/**/*.js"
+alwaysApply: false
+---
+- Todos los tests de backend viven en test/ plano (Jest + Supertest).
+- Cada bug corregido exige un test de regresión rojo->verde.

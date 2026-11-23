@@ -1,0 +1,7 @@
+﻿---
+description: Contratos HTTP de la API
+globs: "src/routes/**/*.js, src/services/**/*.js"
+alwaysApply: false
+---
+- Formato único de error en la API: { "error": "mensaje descriptivo" }.
+- No romper contratos existentes: cambios solo aditivos.

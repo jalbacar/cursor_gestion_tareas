@@ -1,0 +1,6 @@
+﻿---
+description: Reglas nucleares del proyecto gestion-tareas
+alwaysApply: true
+---
+- Idioma del proyecto, comentarios y mensajes de error: español.
+- Mantener Node 20 y cero dependencias nuevas sin aprobación explícita.

@@ -1,0 +1,9 @@
+﻿---
+description: Convención de limpieza de código del proyecto
+globs: "**/*.js"
+alwaysApply: false
+---
+- Todo módulo expone funciones nombradas; prohibidos los default exports.
+- Sin console.log directo: usa src/utils/logger.js.
+- Los archivos no superan 150 líneas; separa en módulos al superarlo.
+- Comentarios en español, estilo JSDoc en funciones exportadas.
