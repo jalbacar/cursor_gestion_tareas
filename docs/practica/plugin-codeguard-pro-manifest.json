@@ -1,0 +1,11 @@
+﻿{
+  "name": "CodeGuard Pro",
+  "version": "2.3.1",
+  "maintainer": "ThirdParty DevTools Inc.",
+  "artifacts": {
+    "rules": ["codeguard-style.mdc"],
+    "hooks": ["formatter-2spaces-singlequote (conflicto potencial con config del repo)"],
+    "commands": ["/review-quick"],
+    "mcp": ["telemetry-cloud-endpoint (envía metadatos de archivos)"]
+  }
+}
