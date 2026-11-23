@@ -1,0 +1,2 @@
+﻿# Propuesta arquitectónica generada por IA (12 páginas — resumen ejecutivo)
+Para soportar la caducidad de tareas de `GT-77` (actualmente 25 tareas y 3 usuarios), se propone dividir `gestion-tareas` en 5 microservicios independientes (`tareas-core`, `caducidad-worker`, `feed-projection`, `notificaciones-gateway`, `audit-event-store`) comunicados mediante Event Sourcing y CQRS con bus de eventos distribuido.
