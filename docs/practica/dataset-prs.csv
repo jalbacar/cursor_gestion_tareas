@@ -1,0 +1,13 @@
+﻿pr_id,tipo,origen,lead_time_dias,retrabajo_pct,causa_principal,escapes_prod
+PR-01,CRUD,IA-asistida,1.1,8,ninguna,0
+PR-02,CRUD,IA-asistida,1.3,10,ninguna,0
+PR-03,contrato,IA-asistida,5.4,38,spec_insuficiente,1
+PR-04,UI,IA-asistida,2.8,18,contexto_glob_roto,0
+PR-05,migracion,IA-asistida,3.6,22,scope_creep,0
+PR-06,contrato,IA-asistida,4.8,35,spec_insuficiente,1
+PR-07,CRUD,manual,1.4,9,ninguna,0
+PR-08,UI,IA-asistida,3.0,19,encargo_ambiguo,0
+PR-09,contrato,IA-asistida,8.2,45,spec_insuficiente,1
+PR-10,migracion,IA-asistida,3.4,20,alucinacion_api,0
+PR-11,CRUD,IA-asistida,1.0,7,ninguna,0
+PR-12,UI,manual,2.6,15,ninguna,0
