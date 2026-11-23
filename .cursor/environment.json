@@ -1,0 +1,10 @@
+﻿{
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20-bookworm",
+  "install": "npm ci && npm --prefix frontend ci",
+  "test": "npm test && npm --prefix frontend test",
+  "start": "npm start",
+  "env": {
+    "NODE_ENV": "development",
+    "PORT": "3000"
+  }
+}
